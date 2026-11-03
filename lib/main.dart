@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,15 +34,18 @@ class MyHome extends StatelessWidget {
         title: const Text('Judul Halaman'),
       ),
       drawer: const MyDrawer(),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(Icons.home_rounded, size: 80, color: Colors.teal),
             SizedBox(height: 16),
             Text(
               'Selamat datang di aplikasi ku',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
@@ -65,15 +70,35 @@ class MyDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
           ),
+
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('Beranda'),
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
+
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Profil'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfilePage(),
+                ),
+              );
+            },
+          ),
+
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Pengaturan'),
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
         ],
       ),
