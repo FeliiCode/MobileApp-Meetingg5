@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  final String userName = 'Felisa Vivian Margaria';
+  final String userName = 'Felisa Vivian Margaretha';
   final String role = 'Mahasiswa';
   final String nim = '1124160036';
   final String kelas = 'TI 24 SE SH';
@@ -20,14 +20,16 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profil Pengguna'),
+        centerTitle: true,
         backgroundColor: Colors.teal,
         foregroundColor: Colors.white,
-        centerTitle: true,
       ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            // Foto profil
             const CircleAvatar(
               radius: 50,
               backgroundColor: Colors.teal,
@@ -40,22 +42,45 @@ class ProfilePage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
+            // Informasi pengguna
             Text(
               userName,
               style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
 
             const SizedBox(height: 8),
 
-            Text(role),
-            Text('NIM : $nim'),
-            Text('Kelas : $kelas'),
+            Text(
+              role,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[700],
+              ),
+            ),
+
+            Text(
+              'NIM : $nim',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[700],
+              ),
+            ),
+
+            Text(
+              'Kelas : $kelas',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey[700],
+              ),
+            ),
 
             const SizedBox(height: 24),
 
+            // Tombol edit profil
             ElevatedButton.icon(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -70,6 +95,7 @@ class ProfilePage extends StatelessWidget {
 
             const SizedBox(height: 24),
 
+            // Statistik profil
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 12),
@@ -89,6 +115,7 @@ class ProfilePage extends StatelessWidget {
 
             const SizedBox(height: 24),
 
+            // Judul pengalaman
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -102,12 +129,15 @@ class ProfilePage extends StatelessWidget {
 
             const Divider(),
 
+            // Daftar pengalaman
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: experiences.length,
               itemBuilder: (context, index) {
                 return Card(
+                  elevation: 2,
+                  margin: const EdgeInsets.symmetric(vertical: 6),
                   child: ListTile(
                     leading: const Icon(
                       Icons.work,
@@ -125,6 +155,7 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
+// Widget statistik profil
 class StatItem extends StatelessWidget {
   final String count;
   final String label;
@@ -148,9 +179,12 @@ class StatItem extends StatelessWidget {
             color: Colors.teal,
           ),
         ),
-        const SizedBox(height: 4),
+
+        const SizedBox(height: 8),
+
         Text(
           label,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 14,
             color: Colors.grey[600],
